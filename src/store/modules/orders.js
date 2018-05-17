@@ -1,6 +1,5 @@
 import Vue from 'vue';
-import {renderFunctions} from '../index'
-
+import { renderFunctions } from '../../renderFunctions'
 export default {
 	namespaced: true,
 	state: {
@@ -10,13 +9,16 @@ export default {
       enableColResize: true,
       animateRows: true,
       enableSorting: true,
+      rowSelection: 'multiple',
       defaultColDef: {
         valueFormatter: function (params) {
           return renderFunctions.formatNumber(params.value);
+        },
+        cellStyle: function (params) {
+          return renderFunctions.alignForNumber(params.value);
         }
       },
       onGridReady() {
-        console.log(renderFunctions);
         this.api.sizeColumnsToFit();
       }
     }
@@ -33,8 +35,10 @@ export default {
 		setData(state, data) {
 			//state.items = data;
       state.gridOptions.columnDefs = data.used_columns;
-      state.gridOptions.api.setColumnDefs(data.used_columns);
-      state.gridOptions.api.setRowData(data.data.results);
+      if(state.gridOptions.api) {
+        state.gridOptions.api.setColumnDefs(data.used_columns);
+        state.gridOptions.api.setRowData(data.data.results);
+      }
 		}
   },
   actions: {

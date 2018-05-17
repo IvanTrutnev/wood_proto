@@ -1,0 +1,11 @@
+{
+  "content": "This is some content",
+  "Order List": "Order List",
+  "Invoices": "Invoice List",
+  "Order Products": "Order Products",
+  "orders": {
+    "tables": {
+      "DATECREATE": "Create Date"
+    }
+  }
+}

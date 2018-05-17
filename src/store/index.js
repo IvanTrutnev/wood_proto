@@ -1,33 +1,19 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
-import menu from './modules/menu'
-import orders from './modules/orders'
-import { state } from './state'
-import * as getters from './getters'
-import * as actions from './actions'
-import * as mutations from './mutations'
-import plugins from './plugins'
+import Vue from 'vue';
+import Vuex from 'vuex';
 
-Vue.use(Vuex)
+Vue.use(Vuex);
+
+import menu from './modules/menu';
+import orders from './modules/orders';
+import login from './modules/login';
+import generic from './modules/generic'
 
 export const store = new Vuex.Store({
-  state,
-  getters,
-  actions,
-  mutations,
-  plugins,
 	modules: {
 		menu,
-		orders
+		orders,
+    login,
+    generic
 	},
 	strict: process.env.NODE_ENV !== 'production'
 });
-
-export const renderFunctions = {
-  formatNumber: (value, accuracy) => {
-    if(typeof value === 'number') {
-      let maximumAccuracy = accuracy || 3;
-      return value.toLocaleString('ru-RU',{ maximumFractionDigits: maximumAccuracy });
-    }
-  }
-};

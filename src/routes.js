@@ -4,62 +4,48 @@ import VueRouter from 'vue-router';
 Vue.use(VueRouter);
 
 import OrderList from './components/OrderList';
+import Order from './components/Order'
 import InvoiceList from './components/InvoiceList';
 import OrderProductList from './components/OrderProductList';
-import LoginComponent from './components/LoginComponent';
-import E404 from './components/E404';
+import E404 from './components/common/E404';
+import Login from './components/Login'
 
 import {store} from './store';
 
 const routes = [
   {
-    path: '/login',
-    name: 'login',
-    component: LoginComponent,
+  	path: '',
+  	redirect: {name: 'orders'}
   },
   {
-  	path: '',
-  	redirect: {name: 'orders'},
-    beforeEnter: guardRoute
+    path: '/login',
+    name: 'login',
+    component: Login
   },
   {
     name: 'orders',
 		path: '/orders',
 		component: OrderList,
-    beforeEnter: guardRoute
 	},
+  {
+    path: '/orders/:id',
+    component: Order,
+  },
   {
     name: 'invoices',
 		path: '/invoices',
-		component: InvoiceList,
-    beforeEnter: guardRoute
+		component: InvoiceList
 	},
   {
     name: 'orderProducts',
 		path: '/orderProducts',
-		component: OrderProductList,
-    beforeEnter: guardRoute
+		component: OrderProductList
 	},
   {
 		path: '*',
 		component: E404
 	}
 ];
-
-function guardRoute (to, from, next) {
-  // work-around to get to the Vuex store (as of Vue 2.0)
-  const auth = router.app.$options.store.state.auth;
-
-  if (!auth.isLoggedIn) {
-    next({
-      path: '/login',
-      query: { redirect: to.fullPath }
-    })
-  } else {
-    next()
-  }
-}
-
 export const router = new VueRouter({
 	routes,
 	mode: 'history'
