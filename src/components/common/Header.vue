@@ -1,11 +1,11 @@
 <template>
     <div>
         <header class="d-flex justify-content-between">
-            <button class="btn btn-info" @click="toggleMenu">
+            <button class="btn btn-info header__toggle-button" @click="toggleMenu">
                 <transition name="fade" mode="out-in">
                     <icon v-if="showMenuFlag" name="angle-double-left" key="left"></icon>
                    <!-- <icon v-else name="angle-double-right" key="right"></icon>-->
-                    <icon name="angle-double-left" key="right" class="rotate-icon" v-else></icon>
+                    <icon name="angle-double-left" key="right" class="header__toggle-button_rotate-icon" v-else></icon>
                 </transition>
             </button>
             <div class="d-flex">
@@ -71,7 +71,6 @@
         height: 13px;
         width: 20px;
     }
-
     .fade-enter-active, .fade-leave-active {
         transition: transform .2s;
     }
@@ -79,7 +78,10 @@
         /*opacity: 0;*/
         transform: rotate(180deg);
     }
-    .rotate-icon {
+    .header__toggle-button {
+        padding-top: 7px;
+    }
+    .header__toggle-button_rotate-icon {
         transform: rotate(180deg);
     }
 </style>
