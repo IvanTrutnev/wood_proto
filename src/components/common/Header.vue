@@ -1,6 +1,6 @@
 <template>
     <div>
-        <header class="d-flex justify-content-between">
+        <header class="d-flex justify-content-between header">
             <button class="btn btn-info header__toggle-button" @click="toggleMenu">
                 <transition name="fade" mode="out-in">
                     <icon v-if="showMenuFlag" name="angle-double-left" key="left"></icon>
@@ -8,9 +8,7 @@
                     <icon name="angle-double-left" key="right" class="header__toggle-button_rotate-icon" v-else></icon>
                 </transition>
             </button>
-            <div class="d-flex">
-                <div>
-                    <b-dropdown right :text="this.username">
+            <b-dropdown right :text="this.username" class="header__dropdown">
                         <b-dropdown-item @click="changeLang('lt')"><img class="lang-icon" src="../../assets/lt.svg"></b-dropdown-item>
                         <b-dropdown-divider></b-dropdown-divider>
                         <b-dropdown-item @click="changeLang('ru')"><img class="lang-icon" src="../../assets/ru.svg"></b-dropdown-item>
@@ -18,9 +16,7 @@
                         <b-dropdown-item @click="changeLang('en')"><img class="lang-icon" src="../../assets/en.svg"></b-dropdown-item>
                         <b-dropdown-divider></b-dropdown-divider>
                         <b-dropdown-item @click="logout">Logout</b-dropdown-item>
-                    </b-dropdown>
-                </div>
-            </div>
+            </b-dropdown>
         </header>
     </div>
 </template>
