@@ -1,22 +1,48 @@
 <template>
-    <div>
+    <div class="order">
         <div class="d-flex justify-content-end">
             <button type="button" class="btn btn-outline-success" @click="saveOrder">Save</button>
         </div>
-        <div>
-            <h2>
+        <div v-b-toggle.collapse2 class="m-1">
+            <h2 class="">
                 Order {{id}}
+                <icon name="angle-down"></icon>
             </h2>
         </div>
         <hr />
-        <div>
-            <div>
-                <label class="typo__label">Currency</label>
-                <multiselect v-model="currency.value" :max-height="200" :searchable="false" :close-on-select="false" :show-labels="false"  placeholder="Search a tag" label="code" track-by="code" :options="currencies"></multiselect>
-            </div>
+        <div class="order__order-info-form">
+            <b-collapse id="collapse2">
+                <div>
+                    <label class="typo__label">Currency</label>
+                    <multiselect v-model="currency.value" :max-height="200" :searchable="false" :close-on-select="false" :show-labels="false"  placeholder="Search a tag" label="code" track-by="code" :options="currencies"></multiselect>
+                </div>
+            </b-collapse>
         </div>
-        <div>
-            <router-link :to="{name: 'orders'}">Start from main page</router-link>
+        <div class="order__order-info-tabs">
+            <b-card no-body>
+                <b-tabs card>
+                    <b-tab active>
+                        <template slot="title">Products</template>
+                        Products
+                    </b-tab>
+                    <b-tab>
+                        <template slot="title">Shipment</template>
+                        Shipment
+                    </b-tab>
+                    <b-tab>
+                        <template slot="title">Shipment Specification</template>
+                        Shipment Specification
+                    </b-tab>
+                    <b-tab>
+                        <template slot="title">Documents</template>
+                        Documents
+                    </b-tab>
+                    <b-tab>
+                        <template slot="title">Comments</template>
+                        Comments
+                    </b-tab>
+                </b-tabs>
+            </b-card>
         </div>
     </div>
 
@@ -79,6 +105,8 @@
 </script>
 
 <style scoped>
-
+    .order__order-info-tabs {
+        margin-top: 10px;
+    }
 </style>
 
