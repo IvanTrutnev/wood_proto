@@ -71,7 +71,7 @@
           user: {
             value: [],
             options: []
-          }
+          },
         }
       }
     },

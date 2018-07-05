@@ -16,6 +16,14 @@ import "../node_modules/ag-grid/dist/styles/theme-dark.css";
 import "../node_modules/ag-grid/dist/styles/theme-material.css";
 import "../node_modules/ag-grid/dist/styles/ag-theme-balham.css";
 
+import "ag-grid-enterprise";
+
+import "ag-grid-enterprise/main";
+
+import {LicenseManager} from "ag-grid-enterprise/main";
+LicenseManager.setLicenseKey("UAB_Visata_ERP_Falcon_1Devs27_September_2018__MTUzODAwMjgwMDAwMA==2730d28a3cc30d3a5416eab0659a0748");
+
+
 import "../node_modules/vue-multiselect/dist/vue-multiselect.min.css";
 import "./assets/styles.css"
 

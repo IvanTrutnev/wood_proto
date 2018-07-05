@@ -16,8 +16,12 @@ export default {
         },
         cellStyle: function (params) {
           return renderFunctions.alignForNumber(params.value);
-        }
+        },
+        enableValue: true,
+        enableRowGroup: true,
+        enablePivot: true
       },
+      showToolPanel: false,
       onGridReady() {
         this.api.sizeColumnsToFit();
       }
